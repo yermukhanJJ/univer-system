@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация для студентов</title>
+</head>
+<body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<div class="container">
+    <div class="row main-form">
+        <form name="f" method="post" th:action="@{/auth/for-student}" th:object="${studentRequest}">
+
+            <label for="username" class="cols-sm-2 control-label">Username</label>
+            <input type="text" th:field="*{username}" id="username" placeholder="Enter your Username"/>
+            <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error!</div>
+
+            <br>
+            <br>
+
+            <label for="email" class="cols-sm-2 control-label">Email</label>
+            <input type="email" th:field="*{email}" id="email" placeholder="Enter your email"/>
+            <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error!</div>
+
+            <br>
+            <br>
+
+            <label for="surname" class="cols-sm-2 control-label">Surname</label>
+            <input type="text" th:field="*{surname}" id="surname" placeholder="Enter your surname"/>
+
+            <br>
+            <br>
+
+            <label for="name" class="cols-sm-2 control-label">Name</label>
+            <input type="text" th:field="*{name}" id="name" placeholder="Enter your name"/>
+
+            <br>
+            <br>
+
+            <label for="fatherland" class="cols-sm-2 control-label">Fatherland</label>
+            <input type="text" th:field="*{fatherland}" id="fatherland" placeholder="Enter your fatherland"/>
+
+            <br>
+            <br>
+
+            <label for="course" class="cols-sm-2 control-label">Course</label>
+            <input type="number" max="5" min="1" step="1" th:field="*{course}" id="course" placeholder="Enter your course"/>
+
+            <br>
+            <br>
+
+            <label for="telephone" class="cols-sm-2 control-label">Telephone</label>
+            <input type="tel" pattern="[0-9]{1}[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" autocomplete="off"
+                   th:field="*{telephone}" id="telephone" placeholder="Enter your telephone"/>
+            <span class="help-block">Format: 8888-888-88-88.</span>
+
+            <br>
+            <br>
+
+            <label for="bd" class="cols-sm-2 control-label">Birth day</label>
+            <input type="date" th:field="*{bd}" id="bd" placeholder="Enter your birth day"/>
+
+            <br>
+            <br>
+
+            <label for="password" class="cols-sm-2 control-label">Password</label>
+            <input type="password" th:field="*{password}" id="password" placeholder="Enter your password"/>
+
+            <br>
+            <br>
+
+            <input type="submit" value="Sign Up!">
+
+        </form>
+        <div>
+            <a th:href="@{/auth/login}">Sign in!</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
